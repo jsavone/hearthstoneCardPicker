@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Hearthstone</title>
+  </head>
+  <body>
+    <form class="cardsForm" action="/cards" method="post">
+      <input type="number" name="mana" placeholder="Mana">
+      <input type="number" name="attack" placeholder="Attack">
+      <input type="number" name="health" placeholder="Health">
+      <input type="text" name="description" placeholder="Name/Description">
+      <input type="submit" value="Create Card">
+    </form>
+    <h3>Your current list:</h3>
+    <% for(let i=0; i < user_cards.length; i++) { %>
+      <hr>
+      <div>
+        <p><strong>Mana:</strong> <%=user_cards[i].mana%></p>
+        <p><strong>Attack:</strong> <%=user_cards[i].attack%></p>
+        <p><strong>Health:</strong> <%=user_cards[i].health%></p>
+        <p><strong>Card:</strong> <%=user_cards[i].description%></p>
+        <a href="/cards/remove/<%=user_cards[i].id%>">Remove</a>
+      </div>
+    <% } %>
+    <hr>
+    <h1>All cards:</h1>
+    <% for(let i=0; i < cards.length; i++) { %>
+      <hr>
+      <div>
+        <p><strong>Mana:</strong> <%=cards[i].mana%></p>
+        <p><strong>Attack:</strong> <%=cards[i].attack%></p>
+        <p><strong>Health:</strong> <%=cards[i].health%></p>
+        <p><strong>Card:</strong> <%=cards[i].description%></p>
+        <a href="/cards/add/<%=cards[i].id%>">Add to list</a>
+      </div>
+    <% } %>
+  </body>
+</html>
